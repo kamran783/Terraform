@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color picker</title>
+</head>
+<style>
+    body {
+        height: 100vh;
+        display:flex;
+        justify-content : center;
+        align-items:center;
+    }
+    #container {
+        background-color: grey;
+        padding : 24px;
+        border-radius : 20px;
+    }
+    #input-color {
+        padding : 8px;
+        font-size : 20px;
+        border-radius : 15px;
+        border:3px solid green;
+        margin : 15px 0px;
+    }
+    #input-color:focus {
+        outline:none;
+    }
+    #enter {
+        padding : 8px;
+        font-size : 20px;
+        border-radius : 15px;
+        background-color:blue;
+        color:white
+    }
+    #input-color:hover{
+        border:3px solid red;
+
+    }
+    button {
+        margin : 15px;
+        padding : 2px 12px;
+        color:white;
+    }
+    #redBtn{
+        background-color: red;
+    }
+    #greenBtn {
+        background-color:green;
+
+    }
+    #randomcolorBtn{
+        color:black;
+    }
+   
+
+
+</style>
+<body>
+
+<div id="container">
+    <h1>color picker</h1>
+    <input type="text" id="input-color" placeholder="Enter background color"/>
+    <button type="submit" id="enter">Enter</button>
+    <div id="color-buttons">
+        
+        <button id="redBtn">red</button>
+        <button id="greenBtn">green</button>
+        <button id="randomcolorBtn">Random</button>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
