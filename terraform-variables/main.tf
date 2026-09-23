@@ -16,7 +16,8 @@ resource "aws_instance" "example"{
     instance_type = var.aws_instance_type
 
     root_block_device {
-        volume_size = var.root_volume_size
-        volume_type = var.root_volume_type
+        delete_on_termination = true
+        volume_size = var.ec2_config.v_size
+        volume_type = var.ec2_config.v_type
     }
 }
