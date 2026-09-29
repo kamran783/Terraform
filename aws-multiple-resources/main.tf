@@ -35,15 +35,28 @@ resource "aws_subnet" "main" {
   }
 }
 
+# resource "aws_instance" "main" {
+#   count         = length(var.ec2_config)
+#   ami           = var.ec2_config[count.index].ami
+#   instance_type = var.ec2_config[count.index].instance_type
+
+#   subnet_id = element(aws_subnet.main[*].id, count.index % length(aws_subnet.main))
+
+#   tags = {
+#     Name = "${local.name}-instance-${count.index}"
+#   }
+# }
+
+# using the for_each method
+
 resource "aws_instance" "main" {
-  count         = length(var.ec2_config)
-  ami           = var.ec2_config[count.index].ami
-  instance_type = var.ec2_config[count.index].instance_type
+  for_each = var.ec2_map
+  #we will get each.key and each.value
 
-  subnet_id = element(aws_subnet.main[*].id, count.index % length(aws_subnet.main))
-
+  ami           = each.value.ami
+  instance_type = each.value.instance_type
+  subnet_id = element(aws_subnet.main[*].id, index(keys(var.ec2_map), each.key) % length(aws_subnet.main))
   tags = {
-    Name = "${local.name}-instance-${count.index}"
+    Name = "${local.name}-instance-${each.key}"
   }
 }
-
