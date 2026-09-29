@@ -55,3 +55,4 @@ locals {
 output "value" {
     value = local.map3
 }
+
